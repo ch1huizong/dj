@@ -8,6 +8,7 @@ from django.urls import reverse
 
 from taggit.managers import TaggableManager
 
+
 class PublishedManager(models.Manager):
     def get_queryset(self):
         return super(PublishedManager, self).get_queryset()\
@@ -15,48 +16,47 @@ class PublishedManager(models.Manager):
 
 class Post(models.Model):
     STATUS_CHOICES = (
-        ('draft', 'Draft'),
-        ('published', 'Published'),
+        ('draft', '草稿'),
+        ('published', '已发布'),
     )
-    title = models.CharField(max_length=250)
-    slug = models.SlugField(max_length=250,
-                            unique_for_date="publish")
-    author = models.ForeignKey(User, related_name="blog_posts")
-    body = models.TextField()
-    publish = models.DateTimeField(default=timezone.now)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-    status = models.CharField(max_length=10,
+    title = models.CharField('标题',max_length=250)
+    author = models.ForeignKey(User, related_name="blog_posts",
+                                verbose_name='作者')
+    body = models.TextField('内容')
+    publish = models.DateTimeField('发布日期',default=timezone.now)
+    created = models.DateTimeField('创建日期',auto_now_add=True)
+    updated = models.DateTimeField('更新日期',auto_now=True)
+    status = models.CharField('状态',max_length=10,
                             choices=STATUS_CHOICES, default="draft")
     objects = models.Manager()
     published = PublishedManager()
     tags = TaggableManager()
 
     class Meta:
+        verbose_name = 'post'
+        verbose_name_plural = 'posts'
         ordering = [ '-publish', ]
 
     def get_absolute_url(self):
         return reverse('blog:post_detail', 
-                        args=[ self.publish.year,
-                               self.publish.strftime('%m'),
-                               self.publish.strftime('%d'),
-                               self.slug])
+                        args=[self.id])
 
 
     def __unicode__(self):
         return self.title
 
+
 class Comment(models.Model):
-    post = models.ForeignKey(Post, related_name="comments")
-    name = models.CharField(max_length=80)
-    email = models.EmailField()
-    body = models.TextField()
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-    active = models.BooleanField(default=True)
+    post = models.ForeignKey(Post, related_name='comments')
+    name = models.CharField('姓名',max_length=80)
+    email = models.EmailField('邮件')
+    body = models.TextField('内容')
+    created = models.DateTimeField('创建日期',auto_now_add=True)
+    updated = models.DateTimeField('更新日期',auto_now=True)
+    active = models.BooleanField('活跃',default=True)
 
     class Meta:
         ordering = ('created',)
 
     def __unicode__(self):
-        return 'Comment by {} on {}'.format(self.name, self.post)
+        return '{} 评论 {}'.format(self.name, self.post)

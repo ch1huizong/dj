@@ -1,11 +1,13 @@
+# -*- coding:UTF-8 -*-
+
 from django.contrib.syndication.views import Feed
-from django.template.defaultfilters import truncatewords
+from django.template.defaultfilters import slice_filter
 from .models import Post
 
 class LatestPostsFeed(Feed):
-    title = 'My Blog'
+    title = '我的博客'
     link = '/blog/'
-    description = 'New posts of my blog.'
+    description = '我的博客的最新文章'
 
     def items(self):
         return Post.published.all()[:5]
@@ -14,6 +16,6 @@ class LatestPostsFeed(Feed):
         return item.title
 
     def item_description(self, item):
-        return truncatewords(item.body, 30)
+        return slice_filter(item.body, "30")
 
 

@@ -1,19 +1,17 @@
 {% extends "blog/base.html" %}
 
-{% block title %}Share A Post{% endblock %}
+{% block title %}分享文章{% endblock %}
 
 {% block content %}
-	{% if sent %}
-		<h1>E-mail successfully sent</h1>
-		<p>
-		"{{ post.title }}" was successfully sent to {{ cd.to }}
-		</p>
-	{% else %}
-		<h1>Share "{{ post.title }}" by e-mail</h1>
-		<form action="." method="post">
-			{% csrf_token %}
-			{{ form.as_p }}
-			<input type="submit" value="Send e-mail">
-		</form>
-	{% endif %}
+    {% if sent %}
+        <h1>邮件已经成功发送</h1>
+		<p>"{{ post.title }}" 已经被邮件成功发送到{{ form.cleaned_data.to }}.</p>
+    {% else %}
+        <h1>通过邮件分享 "{{ post.title }}"</h1>
+        <form action="." method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="发送邮件">
+        </form>
+    {% endif %}
 {% endblock %}
