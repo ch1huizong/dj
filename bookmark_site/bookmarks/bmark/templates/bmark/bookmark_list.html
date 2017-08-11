@@ -1,0 +1,29 @@
+{% if bookmarks %}
+	<ul class="bookmarks">
+		{% for bookmark in bookmarks %}
+		<li>
+			<a href="{{ bookmark.link.url }}" class="title">{{ bookmark.title }}</a>
+			<br>
+			{% if show_tags %}
+				Tags:
+				<ul class="tags">
+					{% for tag in bookmark.tags.all %}
+					<li>
+						<a href="{% url "tag_page" tag.name %}">{{ tag.name }}</a>
+					</li>
+					{% endfor %}
+				</ul>
+				<br>
+			{% endif %}
+			{% if show_user %}
+			Posted by:
+				<a href="{% url "user_page" bookmark.user.username %}" class="username">
+					{{ bookmark.user.username }}
+				</a>
+			{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<p>还没有书签</p>
+{% endif %}

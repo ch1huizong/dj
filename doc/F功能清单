@@ -1,0 +1,151 @@
+
+一、博客应用
+	
+	1.功能清单：
+
+		模型: 
+			Post, Comment
+
+		操作: 
+			a.Post列表(按标签展示)
+
+			b.Post详情(处理comment表单,根据标签展示相似的文章)
+
+			c.Post分享功能(通过email表单)
+
+
+		通过自定义标签/过滤器展示公共部分
+		增加sitemap/feed
+
+		继承第三方搜索引擎Solr(未完成)
+
+	2.软件包：
+		django-taggit(标签)
+		markdown
+
+	3.启发:
+		内部通用class视图可以解决任务比较单一的任务,若一个视图中需要处理多个任务,
+		可以退回的fun试图,或者class原型视图
+
+
+
+二、图片社交网站
+	
+	1.功能清单:
+
+		用户认证、编辑简介、展示面板
+		社交网站的集成（国内不能用）
+
+		图片内容的添加、详情(create、detail、like、list)
+
+		与前端页面交互:
+			jquery做成的bookmark
+			ajax点赞功能
+			ajax翻页
+
+		个人关注系统
+		增加了用户最新动态通知的能力
+		默认喜欢图片，自动模型相关字段（信号机制）
+		redis存储每张图片在线浏览数量、最热排名
+
+
+
+	2.软件包：
+		Pillow
+		python-social-auth(社交媒体认证)
+		sorl-thumbnail(图片缩略图)
+		jquery.cookie
+		redis
+
+	
+	3.待学：
+		对User模型进行扩展
+		自定义用户认证后端
+		jquery、ajax
+		建立自定义的view装饰器
+
+		M2M字段通过中间层定义，动态增加字段到User模型
+		和动态增加get_absolute_url到User模型
+		select_related/prefetch_related优化查询
+
+		redis应用场景：
+			统计、存储最新条目、队列、缓存、发布/订阅、排名、实时特性
+
+
+	4.启发：
+		最大启发，可以通过get方法的GET参数来初始化表单;
+		利用表单的目的可以是单纯的验证数据？
+
+		django要求所有的POST请求都包括csrftoken,这意味着
+		所有的ajax POST请求必须也包含，需要从cookie取出token,
+		再组合数据发送出去
+		
+		优化数据库性能的手段：索引，查询优化，缓存，去规范化
+
+
+
+
+三、在线教育平台功能
+	
+	1.功能清单
+
+		模型: Subject, Course, Module, Content
+
+		身份: 讲师, 公众, 会员
+
+		操作:CURD 
+
+			(讲师) 内容管理系统(CURD)
+
+				a. course(内部通用视图)
+
+				b. module(formset+类视图)
+
+				c. content
+
+				d. ajax模块和内容排序
+		
+
+			(公众) 课程的公共展示部分
+
+			(面向会员) 学生注册/和课程展示
+
+		性能: 缓存
+
+		服务: API(提供给第三方使用的API)
+
+
+	2.软件包
+		django-braces
+		django-embed-video
+		python-memcached
+		django-memcache-status
+		djangorestframework
+
+
+	3、待学
+
+
+		加载和卸载原始数据
+
+
+		自定义字段？
+
+		缓存
+
+		rest-framework
+			serializer
+			通用/自定义view 
+			认证/权限
+			viewsets(特定模型的视图集合)
+
+
+	4. 启发
+		当fun/class视图中有默认参数时,可以定义多个url模式匹配;
+		form hidden组件在模板中不显示,但可以在View中设置默认值
+
+
+1.slug有中文问题，可以用uslug解决，
+	但对seo不友好，我干脆不用了，用id解决url
+
+2.正则表达式注意缺失$,导致匹配同一个正则问题

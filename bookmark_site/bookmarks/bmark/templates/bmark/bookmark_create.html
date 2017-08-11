@@ -1,0 +1,13 @@
+{% extends "bmark/base.html" %}
+
+{% block title %}保存书签{% endblock %}
+{% block head %}保存书签{% endblock %}
+
+{% block content %}
+	<form action="" method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="保存">
+	</form>
+{% endblock %}
+

@@ -1,0 +1,39 @@
+
+Django进化路线(DRY, Common)
+
+	基础 -> 自定义逻辑 -> 配置
+
+1. ORM
+
+2. URL路由系统
+
+3. ADMIN自动管理界面
+
+4. 开发环境
+
+5. 模板系统
+
+6. FORM表单系统
+
+7. auth用户认证系统
+	login/logout 改变用户的状态
+
+8. 缓存系统
+
+9. feed系统
+
+10.cookie/session系统(低级)
+	POST来的数据存储在SESSION中
+	
+
+11.REST
+	特定模型的CURD操作集合(Viewset)
+
+
+
+Web服务器状态的改变.
+后端: 主要是数据
+前端: 展示
+Ajax: 数据交互
+
+Ajax ->post -> url -> View

@@ -1,0 +1,16 @@
+body {
+  padding-top: 50px;
+}
+.content {
+  padding: 40px 15px;
+}
+
+h1 {
+  text-align: center;
+}
+
+ul.tags, ul.tags li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}

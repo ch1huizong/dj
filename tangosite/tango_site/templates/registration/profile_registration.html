@@ -1,0 +1,21 @@
+{% extends "rango/base.html" %}
+{% load static %}
+
+{% block body_block %}
+	<form role="form" style="width:370px;" class="form-profile" method="post" action="." enctype="multipart/form-data">
+	{% csrf_token %}
+	<h2 class="form-profile-heading">User Profile</h2>
+
+	<div class="form-group" >
+	<p class="required"><label for="id_website">Website:</label>
+	<input class="form-control"  id="id_website" maxlength="30" name="id_website" type="url"  placeholder="Enter website"/></p>
+	</div>
+	<div class="form-group">
+    <p class="required"><label for="id_picture">Picture:</label>
+    <input class="form-control" id="id_picture" name="id_picture" type="file" placeholder="Enter picture" /></p>
+	</div>
+
+	<button type="submit" class="btn btn-default">Submit</button>
+    </form>
+{% endblock %}
+

@@ -1,0 +1,16 @@
+
+一. 模型
+	目标对象
+	User模型
+	目标和User的关系
+
+	
+二. 详细
+	1. 公共展示部分
+		list, detail
+
+	2. 用户注册/认证部分
+		register/auth
+
+	3. 关联某用户的特定对象展示
+		list, detail

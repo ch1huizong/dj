@@ -1,0 +1,95 @@
+{% load rango_extra %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+
+    <title>Rango - {% block title %}How to Tango with Django!{% endblock %}</title>
+
+	<link href="{% static 'rango/css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'rango/css/dashboard.css' %}" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/rango/">Rango</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+			<li><a href="{% url 'index' %}">Home</a></li>
+			<li><a href="{% url 'about' %}">About</a></li>
+		  </ul>
+          <ul class="nav navbar-nav navbar-right">
+				{% if user.is_authenticated %}
+					<li><a href="{% url 'restricted' %}">Restricted Page</a></li>
+					<li><a href="{% url 'add_category' %}">Add a New Category</a></li>
+					<li><a href="{% url 'auth_logout' %}?next=/rango/">Logout</a></li>
+				{% else %}
+					<li><a href="{% url 'registration_register' %}">Register</a></li>
+					<li><a href="{% url 'auth_login' %}">Login</a></li>
+				{% endif %}
+              </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+                {% block side_block %}
+				<ul class="nav nav-list">
+					<li class="nav-header">Find a Category</li>
+					<li>
+					<form>
+					<label></label>
+					<input class="search-query span10" type="text" name="suggestion" id="suggestion" value=""/>
+					</form>
+					</li>
+				</ul>
+
+				<div id="cats">
+				</div>
+				{% get_category_list category %}
+				{% endblock %}
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+           <div>
+            {% block body_block %}{% endblock %}
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+	<script src="{% static "rango/js/jquery.min.js" %}"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<script src="{% static "rango/js/rango_ajax.js" %}"></script>
+	<script src="{% static "rango/js/rango_jquery.js" %}"></script>
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script src="{% static "rango/js/bootstrap.min.js"}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

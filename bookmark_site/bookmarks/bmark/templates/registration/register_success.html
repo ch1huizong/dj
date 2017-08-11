@@ -1,0 +1,10 @@
+{% extends "bmark/base.html" %}
+
+{% block title %}注册成功{% endblock %}
+
+{% block head %}注册成功{% endblock %}
+
+{% block content %}
+	<p>感谢您的注册,您的信息已经被保存.
+	现在您可以<a href="{% url "user_login" %}">登录</a>或者回到<a href="{% url "main_page" %}">主页</a></p>
+{% endblock %}

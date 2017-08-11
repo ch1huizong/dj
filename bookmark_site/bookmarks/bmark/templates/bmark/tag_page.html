@@ -1,0 +1,9 @@
+{% extends "bmark/base.html" %}
+
+{% block title %}标签:  {{ tagname }}{% endblock %}
+
+{% block head %}{{ tagname }}的书签: {% endblock %}
+
+{% block content %}
+	{% include "bmark/bookmark_list.html" %}
+{% endblock %}

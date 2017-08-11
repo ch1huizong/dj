@@ -1,0 +1,28 @@
+{% extends "rango/base.html" %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block body_block %}
+	<link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+
+	<form action="." method="post" class="form-signin">
+		{% csrf_token %}
+
+		<h1 class="form-signin-heading">Login to Rango</h1>
+		<h2 class="form-signin-heading">Please sign in</h2>
+		<label for="id_username" class="sr-only">Username</label>
+		<input type="text" id="id_username" name="username" class="form-control" placeholder="Username" required autofocus>
+		<label for="id_password" class="sr-only">Password</label>
+		<input type="password" id="id_password" class="form-control" placeholder="Password" name="password" required>
+
+		<div class="checkbox">
+		  <label>
+			<input type="checkbox" value="remember-me"> Remember me
+		  </label>
+		</div>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+		<input type="hidden" name="next" value="{{ next }}">
+	</form>
+		<p>Not a member? <a href="{% url 'registration_register' %}"></a></p>
+{% endblock %}

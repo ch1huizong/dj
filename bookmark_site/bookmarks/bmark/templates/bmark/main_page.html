@@ -1,0 +1,17 @@
+{% extends "bmark/base.html" %}
+
+{% block title %}欢迎来到Django书签{% endblock %}
+
+{% block head %}欢迎来到Django书签{% endblock %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+		<p>欢迎{{user.username}},
+		   您现在可以收藏和分享书签了
+		</p>
+	{% else %}
+		<p>欢迎游客用户,
+		在您可以收藏和分享书签前,您需要先<a href="{% url 'user_login' %}">登录</a>
+		</p>
+	{% endif %}
+{% endblock %}

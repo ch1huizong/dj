@@ -1,0 +1,27 @@
+{% extends "bmark/base.html" %}
+
+{% block title %}用户登录{% endblock %}
+
+{% block head %}用户登录{% endblock %}
+
+{% block content %}
+	{% if form.has_errors %}
+	<p>你的用户名和密码不匹配,请重试</p>
+	{% endif %}
+	<form action="." method="post">
+		{% csrf_token %}
+		<div class="form-group">
+		<label for="id_username">用户名</label>
+		{{ form.username }}
+		</p>
+		</div>
+
+		<div class="form-group">
+		<p><label for="id_password">密码</label>
+			{{ form.password }}
+		</p>
+		</div>
+		<input type="hidden" name="next" value="/bookmarks/">
+		<input type="submit" value="登录" class="btn btn-default">
+	</form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "rango/base.html" %}
+{% load static %}
+
+{% block body_block %}
+	<div class="page-header">
+		<h1>About Rango</h1>
+	</div>
+	<p>This is <strong>Rango's about page.</strong></p>
+	<p><a href="{% url 'index' %}">Click to return to The Index page.</a><p>
+	<p>Here's a picture of Rango!</p>
+	<img src="{% static 'rango/images/logo.png' %}" alt="About Logo"><br/>
+	<br/>
+	<button id="about-btn"> Click Me - I run Javascript </button>
+	<p>This is a example</p>
+	<p>This is another example</p>
+{% endblock %}
