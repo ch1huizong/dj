@@ -14,6 +14,7 @@ urlpatterns = [
         name='post_detail',
     ),
     path('<int:post_id>/share/', views.post_share, name='post_share'),
+    path('search/', views.post_search, name='post_search'),
     path('feed/', LatestPostsFeed(), name='post_feed'),
 
     #path('', views.PostListView.as_view(), name='post_list'),

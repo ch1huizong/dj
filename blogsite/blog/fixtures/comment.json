@@ -1,0 +1,41 @@
+[
+{
+    "model": "blog.comment",
+    "pk": 1,
+    "fields": {
+        "post": 5,
+        "name": "che",
+        "email": "che@gmail.com",
+        "body": "Good tutorial for Django + JS!",
+        "created": "2018-10-11T08:56:28.555Z",
+        "updated": "2018-10-11T08:56:28.555Z",
+        "active": true
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 2,
+    "fields": {
+        "post": 5,
+        "name": "dj",
+        "email": "dj@gmail.com",
+        "body": "Nice Good!",
+        "created": "2018-10-11T09:42:36.808Z",
+        "updated": "2018-10-11T09:46:01.195Z",
+        "active": false
+    }
+},
+{
+    "model": "blog.comment",
+    "pk": 3,
+    "fields": {
+        "post": 5,
+        "name": "dj",
+        "email": "dj@gmail.com",
+        "body": "Nice Good!",
+        "created": "2018-10-11T09:44:36.555Z",
+        "updated": "2018-10-11T09:44:36.555Z",
+        "active": true
+    }
+}
+]
