@@ -30,6 +30,11 @@
 			{% endfor %}
 		</ul>
 
+		<h3>Search</h3>
+		<form method="get" action="{% url "blog:post_search" %}">
+			<input type="text" name="query">
+			<input type="submit" value="Search Post">
+		</form>
 	</div>
 </body>
 </html>
