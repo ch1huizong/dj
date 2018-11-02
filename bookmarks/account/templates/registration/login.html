@@ -7,7 +7,8 @@
 	{% if form.errors %}
 		<p>Your username and password didn't match.Please try again.</p>
 	{% else %}
-		<p>Please, use the following form to Log-in:</p>
+		<p>Please, use the following form to Log-in.If you don't have an account
+		<a href="{% url "register" %}">register here</a></p>
 	{% endif %}
 
 	<div class="login-form">
@@ -17,5 +18,6 @@
 			<input type="hidden" name="next" value="{{ next }}">
 			<p><input type="submit" value="Log-in"></p>
 		</form>
+		<p><a href="{% url "password_reset" %}">Forgotten your password?</a></p>
 	</div>
 {% endblock %}
