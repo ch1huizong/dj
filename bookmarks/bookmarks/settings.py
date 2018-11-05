@@ -36,6 +36,8 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'account.apps.AccountConfig',
+    'images.apps.ImagesConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,7 +47,7 @@ INSTALLED_APPS = [
 
     'social_django',
     'django_extensions',
-    'images.apps.ImagesConfig',
+    'sorl.thumbnail',
 ]
 
 MIDDLEWARE = [
@@ -157,3 +159,6 @@ GOOGLE_AUTH_GOOGLE_OAUTH2_SECRET = 'Th6sThj4Xp-NWQ4t0ANncAcS'
 
 # ssl
 #SECURE_SSL_REDIRECT = True
+
+# thumbnail
+#THUMBNAIL_DEBUG = True
