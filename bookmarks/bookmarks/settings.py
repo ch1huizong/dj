@@ -26,9 +26,9 @@ SECRET_KEY = '-u2yf301#o_1%qs#fytmr$d1$*dzpxo7x-k^is!lyfyix4czs1'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'dj.com',
     'localhost',
     '127.0.0.1',
+    '774ff48b.ngrok.io',
 ]
 
 
