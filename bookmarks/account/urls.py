@@ -37,4 +37,8 @@ urlpatterns = [
     # profile
     path('edit/', views.edit, name='edit'),
 
+    # users display
+    path('users/', views.user_list, name='user_list'),
+    path('users/<username>/', views.user_detail, name='user_detail'),
+
 ]

@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
+from django.urls import reverse_lazy
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -86,8 +87,10 @@ WSGI_APPLICATION = 'bookmarks.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'bookmarks',
+        'USER': 'postgres',
+        'PASSWORD': 'quiet',
     }
 }
 
@@ -162,3 +165,7 @@ GOOGLE_AUTH_GOOGLE_OAUTH2_SECRET = 'Th6sThj4Xp-NWQ4t0ANncAcS'
 
 # thumbnail
 #THUMBNAIL_DEBUG = True
+
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: reverse_lazy('user_detail', args=[u.username]),
+}
