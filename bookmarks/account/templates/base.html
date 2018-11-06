@@ -16,7 +16,7 @@
 			<a href="{% url "dashboard" %}">My dashboard</a>
 		</li>
 		<li {% if section == "images" %}class="selected"{% endif %}>
-			<a href="#">Images</a>
+			<a href="{% url "images:list" %}">Images</a>
 		</li>
 		<li {% if section == "people" %}class="selected"{% endif %}>
 			<a href="#">People</a>
@@ -49,5 +49,28 @@
 		{% block content %}
 		{% endblock %}
 	</div>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+	<script>
+		var csrftoken = Cookies.get('csrftoken');
+		function csrfSafeMethod(method){
+			return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+		}
+		
+		$.ajaxSetup({
+			beforeSend: function(xhr, settings){
+				if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+					xhr.setRequestHeader('X-CSRFToken', csrftoken);
+				}
+			}
+		});
+	</script>
+
+	<script>
+		$(document).ready(function(){
+			{% block domready %}
+			{% endblock %}
+		});
+	</script>
 </body>
 </html>
