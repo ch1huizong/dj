@@ -68,7 +68,7 @@ def image_like(request):
 @login_required
 def image_list(request):
     images = Image.objects.order_by('-created')
-    paginator = Paginator(images, 4)
+    paginator = Paginator(images, 2)
     page = request.GET.get('page')
     try:
         images = paginator.page(page)
