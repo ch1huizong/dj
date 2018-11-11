@@ -1,0 +1,27 @@
+
+一. 功能清单
+
+    1. 用户管理
+	登录/登出/改密/重置/个人简介/自定义认证/第三方认证
+    
+    2. 用户关注
+
+    3. 动态
+
+    4. 内容展示
+
+
+二. API设计
+
+    login/ 
+    logout/
+    password_change/
+    password_change/done/
+
+    password_reset/
+    password_reset/done/
+    reset/<uidb64>/<token>/
+    reset/done/
+    
+    register/
+    edit/
