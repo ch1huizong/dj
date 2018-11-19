@@ -6,22 +6,37 @@
     
     2. 用户关注
 
-    3. 动态
+    3. 动态(内置的内容类型管理应用)
 
     4. 内容展示
+    list/detail/rank
 
 
 二. API设计
 
-    login/ 
-    logout/
-    password_change/
-    password_change/done/
+    1. 帐号管理
+        login/ 
+        logout/
+        password_change/
+        password_change/done/
 
-    password_reset/
-    password_reset/done/
-    reset/<uidb64>/<token>/
-    reset/done/
+        password_reset/
+        password_reset/done/
+        reset/<uidb64>/<token>/
+        reset/done/
     
-    register/
-    edit/
+        register/
+        edit/
+
+
+    2. 用户关注   
+        users/
+        users/<username>/
+        users/follow/
+
+
+    3. 动态
+
+
+    4. 图片内容
+        create/

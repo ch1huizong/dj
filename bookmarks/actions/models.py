@@ -1,3 +1,5 @@
+# -*- coding:UTF-8 -*-
+
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
@@ -23,7 +25,7 @@ class Action(models.Model):
         blank=True,
         db_index=True
     )
-    target = GenericForeignKey('target_ct','target_id')
+    target = GenericForeignKey('target_ct','target_id')  # 管理者/接口
     created = models.DateTimeField(auto_now_add=True, db_index=True)
 
     class Meta:

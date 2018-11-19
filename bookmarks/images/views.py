@@ -1,3 +1,5 @@
+# -*- coding:UTF-8 -*-
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -82,7 +84,7 @@ def image_like(request):
 
 @login_required
 def image_list(request):
-    images = Image.objects.order_by('-created')
+    images = Image.objects.order_by('-total_likes')  # 流行度排名
     paginator = Paginator(images, 2)
     page = request.GET.get('page')
     try:

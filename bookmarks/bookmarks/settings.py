@@ -27,6 +27,7 @@ SECRET_KEY = '-u2yf301#o_1%qs#fytmr$d1$*dzpxo7x-k^is!lyfyix4czs1'
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    'dj.com',
     'localhost',
     '127.0.0.1',
     'e5bd050d.ngrok.io',
@@ -47,7 +48,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'django_extensions',
     'social_django',
     'sorl.thumbnail',
 ]
@@ -153,8 +153,8 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.google.GoogleOAuth2',
 ]
-SOCIAL_AUTH_FACEBOOK_KEY = '1514725262005016'
-SOCIAL_AUTH_FACEBOOK_SECRET = '1ee9c35cdfb2637c90b9c4874926f42c'
+SOCIAL_AUTH_FACEBOOK_KEY = '1888178554562550'
+SOCIAL_AUTH_FACEBOOK_SECRET = '9d6b83ebce4890e0890fd1269b7d68a8'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email',]
 SOCIAL_AUTH_TWITTER_KEY = ''
 SOCIAL_AUTH_TWITTER_SECRET = ''
