@@ -9,7 +9,7 @@
     3. 动态(内置的内容类型管理应用)
 
     4. 内容展示
-    list/detail/rank
+    列表/详情/创建/排名/喜欢
 
 
 二. API设计
@@ -28,15 +28,17 @@
         register/
         edit/
 
-
     2. 用户关注   
         users/
         users/<username>/
         users/follow/
 
-
     3. 动态
 
-
     4. 图片内容
-        create/
+        images/create/
+        images/detail/<int:id>/<slug:slug>/
+        images/like/
+        images/
+        images/ranking/
+

@@ -85,7 +85,7 @@ def image_like(request):
 @login_required
 def image_list(request):
     images = Image.objects.order_by('-total_likes')  # 流行度排名
-    paginator = Paginator(images, 2)
+    paginator = Paginator(images, 8)
     page = request.GET.get('page')
     try:
         images = paginator.page(page)
@@ -124,3 +124,4 @@ def image_ranking(request):
             'most_viewed': most_viewed
         }
     )
+
