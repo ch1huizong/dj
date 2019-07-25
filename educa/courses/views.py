@@ -3,6 +3,10 @@
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import (
+    LoginRequiredMixin,
+    PermissionRequiredMixin
+)
 
 from .models import Course
 
@@ -19,28 +23,28 @@ class OwnerEditMixin(object):
         return super(OwnerEditMixin, self).form_valid(form)
 
 
-class OwnerCourseMixin(OwnerMixin):
+class OwnerCourseMixin(OwnerMixin, LoginRequiredMixin):
     model = Course
 
 
 class OwnerCourseEditMixin(OwnerCourseMixin, OwnerEditMixin):
-    fields = ['subject', 'title', 'slug', 'overview']
-    success_url = reverse_lazy('manage_course_list')
-    template_name = 'courses/manage/course/form.html'
+    fields = ["subject", "title", "slug", "overview"]
+    success_url = reverse_lazy("manage_course_list")
+    template_name = "courses/manage/course/form.html"
 
 
 class ManageCourseListView(OwnerCourseMixin, ListView):
-    template_name = 'courses/manage/course/list.html'
+    template_name = "courses/manage/course/list.html"
 
 
-class CourseCreateView(OwnerCourseEditMixin, CreateView):
+class CourseCreateView(PermissionRequiredMixin, OwnerCourseEditMixin, CreateView):
     pass
 
 
-class CourseUpdateView(OwnerCourseEditMixin, UpdateView):
+class CourseUpdateView(PermissionRequiredMixin, OwnerCourseEditMixin, UpdateView):
     pass
 
 
-class CourseDeleteView(OwnerCourseMixin, DeleteView):
-    template_name = 'courses/manage/course/delete.html'
-    success_url = reverse_lazy('manage_course_list')
+class CourseDeleteView(PermissionRequiredMixin, OwnerCourseMixin, DeleteView):
+    template_name = "courses/manage/course/delete.html"
+    success_url = reverse_lazy("manage_course_list")
