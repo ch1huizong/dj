@@ -12,7 +12,7 @@ class OrderField(models.PositiveIntegerField):
     def pre_save(self, model_instance, add):
         if getattr(model_instance, self.attname) is None:  # 没有当前值
             try:
-                qs = self.model.objects.all()
+                qs = self.model.objects.all() # M or C
                 if self.for_fields:
                     query = {
                         field: getattr(model_instance, field)

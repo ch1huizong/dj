@@ -77,7 +77,7 @@ class Content(models.Model):
         }
     )
     object_id = models.PositiveIntegerField()
-    item = GenericForeignKey('content_type', 'object_id')  # db设计, 由两个模型共同建立外键?
+    item = GenericForeignKey('content_type', 'object_id')
     order = OrderField(blank=True, for_fields=['module'])
 
     class Meta:
@@ -85,7 +85,7 @@ class Content(models.Model):
 
 
 class ItemBase(models.Model):
-    ower = models.ForeignKey(
+    owner = models.ForeignKey(
         User,
         related_name='%(class)s_related',
         on_delete=models.CASCADE
