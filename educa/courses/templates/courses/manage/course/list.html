@@ -13,11 +13,9 @@
             <a href="{% url "courses:course_edit" course.id %}">Edit</a>
             <a href="{% url "courses:course_delete" course.id %}">Delete</a>
             <a href="{% url "courses:course_module_update" course.id %}">Edit modules</a>
-            {% comment %}
             {% if course.modules.count > 0 %}
                 <a href="{% url "courses:module_content_list" course.modules.first.id %}">Manage contents</a>
             {% endif %}
-            {% endcomment %}
 
             </p>
         </div>
