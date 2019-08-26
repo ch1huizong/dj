@@ -7,9 +7,7 @@ ADMINS = (
 )
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'educaproject.com',
-    'www.educaproject.com',
+    '.educaproject.com',
 ]
 
 DATABASES = {

@@ -62,5 +62,5 @@ urlpatterns = [
         "<slug:slug>/",
         views.CourseDetailView.as_view(),
         name="course_detail",
-    )
+    ),
 ]
