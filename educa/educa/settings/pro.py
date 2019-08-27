@@ -22,3 +22,5 @@ DATABASES = {
 
 SECURE_SSL_REDIRECT = True
 CSRF_COOKIE_SECURE = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
