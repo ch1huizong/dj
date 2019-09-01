@@ -1,0 +1,11 @@
+django
+pillow
+postgres
+ipython
+django-extensions
+django-braces
+django-embed-video
+python-memcached
+django-memcache-status
+djangorestframework
+uwsgi
