@@ -7,8 +7,12 @@ DEBUG = False
 
 ADMINS = (("ch1huizong", "ch1huizong@gmail.com"),)
 
-ALLOWED_HOSTS = [".shiyin.com"]
-
+allowed_hosts = os.get('ALLOWED_HOSTS')
+if allowed_hosts:
+    ALLOWED_HOSTS = allowed_hosts.split(",")
+else:
+    print("ERROR ! Please Input ALLOWED_HOSTS env settings !")
+    sys.exit(1)
 
 db_host = os.getenv("DB_HOST")
 db_name = os.getenv("DB_NAME")
