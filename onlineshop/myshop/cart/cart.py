@@ -21,7 +21,7 @@ class Cart(object):
         if product_id not in self.cart:
             self.cart[product_id] = {
                 'quantity': 0,
-                'price': str(product.price)
+                'price': str(product.price)  # neccessary?
             }
         if update_quantity:
             self.cart[product_id]['quantity'] = quantity
@@ -44,7 +44,7 @@ class Cart(object):
 
         cart = self.cart.copy()
         for product in products:
-            cart[str[product.id]]['product'] = product
+            cart[str(product.id)]['product'] = product
 
         for item in cart.values():
             item['price'] = Decimal(item['price'])
