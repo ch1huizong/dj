@@ -48,7 +48,7 @@ h1 {
     text-transform:uppercase;
     font-weight:bold;
     font-size:22px;
-    padding:12px;
+    padding:14px 12px 0px;
     float:right;
     transform: rotate(-15deg);
     margin-right:40px;

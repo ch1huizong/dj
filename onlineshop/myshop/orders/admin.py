@@ -41,6 +41,14 @@ def order_detail(obj):
     )
 
 
+def order_pdf(obj):
+    return mark_safe(
+        '<a href="{}">PDF</a>'.format(
+            reverse('orders:admin_order_pdf', args=[obj.id]))
+    )
+order_pdf.short_description = 'Invoice'
+
+
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
     raw_id_fields = ['product']
@@ -52,6 +60,7 @@ class OrderAdmin(admin.ModelAdmin):
         'id', 'first_name', 'second_name', 'email', 'address',
         'postal_code', 'city', 'paid', 'created', 'updated',
         order_detail,
+        order_pdf,
     ]
     list_filter = ['paid', 'created', 'updated']
     inlines = [OrderItemInline]
